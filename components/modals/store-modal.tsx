@@ -16,7 +16,6 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { redirect } from "next/navigation";
 
 const formSchema = z.object({
   name: z.string().min(1),
