@@ -10,7 +10,7 @@ export async function POST(
     const { userId } = auth();
     const body = await req.json();
 
-    const { name, billboardId } = body;
+    const { name, value } = body;
     if (!userId) {
       return new NextResponse("Unauthenticated", {
         status: 401,
@@ -22,8 +22,8 @@ export async function POST(
         status: 400,
       });
     }
-    if (!billboardId) {
-      return new NextResponse("Billboard ID is required", {
+    if (!value) {
+      return new NextResponse("Value is required", {
         status: 400,
       });
     }
@@ -45,16 +45,16 @@ export async function POST(
       return new NextResponse("Unauthorized", { status: 403 });
     }
 
-    const category = await prismadb.category.create({
+    const color = await prismadb.color.create({
       data: {
         name,
-        billboardId,
+        value,
         storeId: params.storeId,
       },
     });
-    return NextResponse.json(category);
+    return NextResponse.json(color);
   } catch (error) {
-    console.log("[CATEGORIES_POST]", error);
+    console.log("[COLOR_POST]", error);
 
     return new NextResponse("Internal Server Error", {
       status: 500,
@@ -68,16 +68,17 @@ export async function GET(
 ) {
   try {
     if (!params.storeId) {
-      return new NextResponse("Store Id is required", { status: 400 });
+      return new NextResponse("Store Id is required", {
+        status: 400,
+      });
     }
 
-    const categories = await prismadb.category.findMany({
+    const color = await prismadb.color.findMany({
       where: {
         storeId: params.storeId,
       },
     });
-
-    const response = NextResponse.json(categories);
+    const response = NextResponse.json(color);
     response.headers.set("Access-Control-Allow-Origin", "*"); // Allow all origins
     response.headers.set(
       "Cache-Control",
@@ -88,8 +89,10 @@ export async function GET(
 
     return response;
   } catch (error) {
-    console.log("[CATEGORIES_GET]", error);
+    console.log("[COLOR_GET]", error);
 
-    return new NextResponse("Internal Server Error", { status: 500 });
+    return new NextResponse("Internal Server Error", {
+      status: 500,
+    });
   }
 }
