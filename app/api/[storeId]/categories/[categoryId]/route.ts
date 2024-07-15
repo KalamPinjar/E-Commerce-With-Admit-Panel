@@ -122,9 +122,20 @@ export async function GET(
       where: {
         id: params.categoryId,
       },
+      include: {
+        billboard: true,
+      },
     });
+    const response = NextResponse.json(category);
+    response.headers.set("Access-Control-Allow-Origin", "*"); // Allow all origins
+    response.headers.set(
+      "Cache-Control",
+      "no-store, no-cache, must-revalidate, proxy-revalidate"
+    );
+    response.headers.set("Pragma", "no-cache");
+    response.headers.set("Expires", "0");
 
-    return NextResponse.json(category);
+    return response;
   } catch (error) {
     console.log("[CATEGORIES_GET]", error);
     return new NextResponse("Internal Server Error", {
