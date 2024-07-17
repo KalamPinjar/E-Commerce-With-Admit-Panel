@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E-Commerce Admin Panel Manager
 
-## Getting Started
+## Features
 
-First, run the development server:
+  - Fully Automated Backend API Server: Supports your e-commerce website with comprehensive backend services.
+  - Product Management: Add, edit, and delete products effortlessly.
+  - Billboard Management: Manage promotional billboards with add, edit, and delete functionality.
+  - Multi-Store Management: Seamlessly manage multiple e-commerce stores.
+  - User-Friendly Interface: Designed for ease of use and efficiency.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Installation
+
+To install the necessary dependencies, run:
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Running Locally
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   - Ensure the project is running on localhost:3000 by setting the environment variables accordingly.
 
-## Learn More
+   - Use the following command to start the development server:
+     
+```
+    npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Using in Production
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   - Deploy the project to your desired hosting platform.
+   - Update the environment variables with the respective URLs to connect to your e-commerce websites.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Deployment
 
-## Deploy on Vercel
+   - Update Stripe Secret Key:
+        Set your Stripe Secret Key in the environment variables file (.env).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```.env
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+STRIPE_SECRET_KEY=your_stripe_secret_key
+```
+
+### Update Deployment URL:
+
+   - Change the URL in the environment variables to match your deployed domain name.
+
+```.env
+
+    NEXT_PUBLIC_API_URL=https://your-deployed-domain.com
+```
+   - Stripe Dashboard Configuration:
+        In the Stripe Dashboard, set your webhook endpoint to https://your-deployed-domain.com/api/webhook.
+        Ensure to select the event checkout.session.completed for successful payment redirects.
+
+## Environment Variables
+
+Ensure the following environment variables are set correctly in your .env file:
+
+```.env
+
+DATABASE_URL=your_postgresql_database_url
+DIRECT_URL=your_postgresql_direct_url
+STRIPE_SECRET_KEY=your_stripe_secret_key
+NEXT_PUBLIC_API_URL=http://localhost:3000  # Update for production
+FRONTEND_STORE_URL=http://localhost:3001  # Update for production
+```
+
+License
+
+This project is licensed under the MIT License.
+Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+Support
+
+For any questions or support, please contact owaiskal57@gmail.com
