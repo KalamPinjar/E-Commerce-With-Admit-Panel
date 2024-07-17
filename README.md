@@ -70,7 +70,7 @@ FRONTEND_STORE_URL=http://localhost:3001 #update for production
 STRIPE_WEBHOOK_SECRET=
 ```
 
-License
+## License
 
 This project is licensed under the MIT License.
 Contributing
