@@ -13,7 +13,6 @@
 To install the necessary dependencies, run:
 
 ```
-
 npm install
 ```
 
@@ -24,7 +23,7 @@ npm install
    - Use the following command to start the development server:
      
 ```
-    npm run dev
+npm run dev
 ```
 
 ## Using in Production
@@ -38,7 +37,6 @@ Deployment
         Set your Stripe Secret Key in the environment variables file (.env).
 
 ```.env
-
 STRIPE_SECRET_KEY=your_stripe_secret_key
 ```
 
@@ -47,8 +45,7 @@ STRIPE_SECRET_KEY=your_stripe_secret_key
    - Change the URL in the environment variables to match your deployed domain name.
 
 ```.env
-
-    NEXT_PUBLIC_API_URL=https://your-deployed-domain.com
+NEXT_PUBLIC_API_URL=https://your-deployed-domain.com
 ```
    - Stripe Dashboard Configuration:
         In the Stripe Dashboard, set your webhook endpoint to https://your-deployed-domain.com/api/webhook.
@@ -59,12 +56,18 @@ STRIPE_SECRET_KEY=your_stripe_secret_key
 Ensure the following environment variables are set correctly in your .env file:
 
 ```.env
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
 
-DATABASE_URL=your_postgresql_database_url
-DIRECT_URL=your_postgresql_direct_url
-STRIPE_SECRET_KEY=your_stripe_secret_key
-NEXT_PUBLIC_API_URL=http://localhost:3000  # Update for production
-FRONTEND_STORE_URL=http://localhost:3001  # Update for production
+DATABASE_URL=""
+
+DIRECT_URL=""
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=""
+STRIPE_API_KEY=
+FRONTEND_STORE_URL=http://localhost:3001 #update for production
+STRIPE_WEBHOOK_SECRET=
 ```
 
 License
